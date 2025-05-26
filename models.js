@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // define model schema = fields on the model: what should the model look like?
-const todoModel = new mongoose., isCompleted({
+const todoModel = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   isCompleted: { type: Boolean, required: false },
