@@ -17,23 +17,30 @@ app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 
 
+app.get("/", async (req, res) => {
+  res.send('hello');
+});
+
 // get all
-app.get("todo/all", async (req, res) => {
+app.get("/todo/all", async (req, res) => {
   res.send({ todos: [] });
 });
 
 // get by id
-app.get("todo/:id", async (req, res) => {
+app.get("/todo/:id", async (req, res) => {
   res.send('Hello world');
 });
 
 // create
-app.post("todo", async (req, res) => {
-  res.send('Hello world');
+app.post("/todo", async (req, res) => {
+  const { title, description, isComplete } = req.body;
+  const todo = await Todo.createTodo({ title, description, isComplete });
+
+  res.send(todo);
 });
 
 // edit
-app.put("todo/:id", async (req, res) => {
+app.put("/todo/:id", async (req, res) => {
   res.send('Hello world');
 });
 
